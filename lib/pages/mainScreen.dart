@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:io';
+
 import 'package:agent_confirmation/constantes/constantes.dart';
 import 'package:agent_confirmation/pages/dashBoard.dart';
 import 'package:agent_confirmation/pages/tracker.dart';
@@ -22,7 +24,6 @@ class _MainScreenState extends State<MainScreen> {
       const DashBorad(),
       const SalaryBoard(),
       const Call(
-        call: null,
       ),
       const ScoreBoard(),
       const Tracker()
@@ -120,9 +121,9 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PersistentTabView(context,
-          navBarHeight: 70,
-          bottomScreenMargin: 77,
-          margin: const EdgeInsets.only(bottom: 7, left: 10, right: 10),
+          navBarHeight: Platform.isIOS ? 60:70,
+          bottomScreenMargin: Platform.isIOS ? 110 : 77,
+          margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
           controller: _controller,
           screens: _buildScreens(),
           items: _navBarsItems(),

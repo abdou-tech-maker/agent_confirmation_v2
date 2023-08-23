@@ -94,7 +94,7 @@ class _CallFirstPageState extends State<CallFirstPage> {
     super.dispose();
   }
 
-  void _launchURL({required url}) async {
+  /*void _launchURL({required url}) async {
     if (await canLaunchUrl(url)) {
       await launchUrl(
         url,
@@ -102,6 +102,15 @@ class _CallFirstPageState extends State<CallFirstPage> {
       );
     } else {
       throw 'Could not launch $url';
+    }
+  }*/
+  Future<void> _launchURL({required url}) async {
+    if (await canLaunchUrl(url)) {
+await launchUrl(
+        url,
+        mode: LaunchMode.externalNonBrowserApplication,
+      );    } else {
+      print(' could not launch $url');
     }
   }
 
@@ -353,9 +362,9 @@ class _CallFirstPageState extends State<CallFirstPage> {
                       color: mainColor,
                       size: 30,
                     ),
-                    onPressed: () {
+                    onPressed: ()  async {
                       print(phoneController.text);
-                      _launchURL(
+                     await _launchURL(
                           url: Uri(
                         scheme: 'tel',
                         path: phoneController.text,
