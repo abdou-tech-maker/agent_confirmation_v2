@@ -19,7 +19,7 @@ List<BlocProvider> getProvidersArray(BuildContext context) {
     ),
     BlocProvider<CallSessionBloc>(
       lazy:
-          false, // Make sure to set this to false to avoid unwanted initialization
+          false, 
       create: (BuildContext context) => CallSessionBloc(),
     ),
     BlocProvider<UpdateViewsCubit>(
